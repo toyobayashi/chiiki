@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 静态链接 CRT，生成的二进制无运行时 DLL 依赖
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+# set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 # 所有产物输出到同一目录
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
@@ -31,9 +31,9 @@ add_library(detours STATIC
 )
 target_include_directories(detours PUBLIC ${detours_SOURCE_DIR}/src)
 target_compile_definitions(detours PRIVATE WIN32_LEAN_AND_MEAN NOMINMAX)
-set_target_properties(detours PROPERTIES
-    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
-)
+# set_target_properties(detours PROPERTIES
+#     MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+# )
 
 # ── dll ─────────────────────────────────────────────────────────────
 add_library(chiiki SHARED src/lib.cpp)
